@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <title>Ecommerce Game console Shop</title>
+</head>
+
+<body>
+    <div class="topbar">
+        <marquee direction="left" loop="" behavior=scroll class="marque" bgcolor="#000000">Unwrap the Magic of Christmas
+            with 70% Off – Blossom Your Holidays with Our Gaming consoles!</marquee>
+    </div>
+   
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                        <div class="container">
+                            <a class="navbar-brand" href="#">
+                                <h1 class="logo">RAIDER <span class="clrchange">.</span></h1>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="index101.html">Home</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="products.html">Products</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+
+                                <ul class="navbar-nav ml-auto">
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="login.html"><i class="fa-solid fa-user"></i></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <section class="section6" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" data-aos="fade-down">
+                    <h1 class="mainheading">
+                        <span class="clrchange">
+                            Contact
+                        </span>
+                        Us
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6" data-aos="fade-right">
+                    <form id="contactform">
+                        <input type="text" placeholder="name" id="name">
+                        <div id="nameError" style="color: red;"></div>
+                        <input type="email" placeholder="email" id="email">
+                        <div id="emailError" style="color: red;"></div>
+                        <input type="number" placeholder="number" id="number">
+                        <div id="numberError" style="color: red;"></div>
+                        <textarea name="message" id="message" placeholder="message" cols="30" rows="10"></textarea>
+                        <div id="messageError" style="color: red;"></div>
+                        <button type="submit" class="links" id="submitBtn">Send Message</button>
+                    </form>
+                </div>
+                <div class="col-sm-6" data-aos="fade-left">
+                    <img src="./assets/retro.gif" alt="Contact img" class="contactimg">
+                </div>
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7777.169039365054!2d77.60131007793366!3d12.934404054831408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15392f6ea2f9%3A0x851befe3b3f1d0b0!2sCentral%20Campus%2C%20Christ%20University!5e0!3m2!1sen!2sin!4v1722914413600!5m2!1sen!2sin" width="1350" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div>
+                    <img src="./assets/collage.png"  height="550" width = "1350" alt="Domain Icon" class="domain-icon">
+            
+                  </a>
+                </nav>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- Firebase Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAw8kxGONoqeE2HnDLhMqwlJqqQI6I9boM",
+            authDomain: "gaming-console-79bfb.firebaseapp.com",
+            projectId: "gaming-console-79bfb",
+            storageBucket: "gaming-console-79bfb.appspot.com",
+            messagingSenderId: "895623566021",
+            appId: "1:895623566021:web:7c337fff510972e370d6ac"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // DOM elements
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const numberInput = document.getElementById('number');
+        const messageInput = document.getElementById('message');
+        
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const numberError = document.getElementById('numberError');
+        const messageError = document.getElementById('messageError');
+
+        // Validation functions
+        function validateName() {
+            const name = nameInput.value.trim();
+            const regex = /^[A-Za-z\s]{3,}$/;
+            if (!regex.test(name)) {
+                nameError.textContent = 'Name must be at least 3 alphabetic characters.';
+                return false;
+            } else {
+                nameError.textContent = '';
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regex.test(email)) {
+                emailError.textContent = 'Invalid email format.';
+                return false;
+            } else {
+                emailError.textContent = '';
+                return true;
+            }
+        }
+
+        function validateNumber() {
+            const number = numberInput.value.trim();
+            const regex = /^\d{10}$/;
+            if (!regex.test(number)) {
+                numberError.textContent = 'Invalid Number format.10 digits needed';
+                return false;
+            } else {
+                numberError.textContent = '';
+                return true;
+            }
+        }   
+
+        // Real-time validation on typing
+        nameInput.addEventListener('input', validateName);
+        emailInput.addEventListener('input', validateEmail);
+        numberInput.addEventListener('input', validateNumber);
+
+
+        // Form submission
+        document.getElementById("contactform").addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isNumberValid = validateNumber();
+
+            if (isNameValid && isEmailValid && isNumberValid ) {
+                // Save to Firebase if all validations pass
+                set(ref(db, 'contact/' + nameInput.value), {
+                    name: nameInput.value,
+                    email: emailInput.value,
+                    number: nameInput.value,
+                    message: messageInput.value,
+                });
+                alert("Message sent successfully!");
+            } else {
+                alert("Please fill out the form correctly.");
+            }
+        });
+    </script>
+</body>
+</html>

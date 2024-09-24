@@ -1,0 +1,102 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(assets/op.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/*for the header*/
+
+header .container .row .navbar {
+    padding: 20px 0px !important;
+    background: #ffffff !important;
+    box-shadow: 0px 1px 17px 0px #00000047;
+    margin-top: 40px;
+}
+
+header .container .row .navbar h1.logo {
+    font-family: "Jost";
+    font-weight: 600;
+    color: #000000;
+    margin: 0px !important;
+}
+
+header .container .row .navbar h1.logo span {
+    color: #FF0000;
+    margin-left: -10px !important;
+}
+
+header .container .row .navbar .container {
+    padding: 0px 10px !important;
+}
+
+header .container .row .navbar div#navbarNav .navbar-nav:nth-child(1) li a {
+    font-size: 24px;
+    color: #000000;
+    font-weight: 500;
+    font-family: 'Jost';
+    letter-spacing: 0.2px;
+    transition: 0.5s ease;
+}
+
+header .container .row .navbar div#navbarNav .navbar-nav:nth-child(1) li {
+    margin: 0px 10px;
+}
+
+header .container .row .navbar div#navbarNav .navbar-nav:nth-child(2) li {
+    margin: 0px 5px;
+}
+
+header .container .row .navbar div#navbarNav .navbar-nav:nth-child(2) li a {
+    font-size: 30px;
+    color: #000000;
+    transition: 0.5s ease;
+}
+
+header .container .row .navbar div#navbarNav .navbar-nav:nth-child(1) {
+    width: 100%;
+    justify-content: center;
+}
+
+header .container .row .navbar div#navbarNav .navbar-nav li a:hover {
+    color: #FF0000;
+    transition: 0.5s ease-out;
+}
+
+header .container .row .navbar h1.logo:hover span {
+    color: #000000;
+    transition: 0.5s ease;
+}
+
+
+/*for the marque scroll*/
+marquee.marque {
+    color: #ffffff;
+    padding: 14px 0px;
+    font-family: 'Jost';
+    font-size: 21px;
+    letter-spacing: 0.5px;
+}
+.topbar {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
+    top: 0px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

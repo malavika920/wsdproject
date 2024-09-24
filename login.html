@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="logstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-black p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center text-white">Register</h2>
+        <form id="registrationForm">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700 text-white">Name</label>
+                <input type="text" id="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <p id="nameError" class="text-red-500 text-sm mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700 text-white">Email</label>
+                <input type="email" id="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <p id="emailError" class="text-red-500 text-sm mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700 text-white">Password</label>
+                <input type="password" id="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <p id="passwordError" class="text-red-500 text-sm mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="confirmPassword" class="block text-sm font-medium text-gray-700 text-white">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <p id="confirmPasswordError" class="text-red-500 text-sm mt-1"></p>
+            </div>
+            <div class="mb-4">
+                <label for="dob" class="block text-sm font-medium text-gray-700 text-white">Date of Birth</label>
+                <input type="date" id="dob" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <p id="dobError" class="text-red-500 text-sm mt-1"></p>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-600">Register</button>
+        </form>
+    </div>
+
+    <!-- Firebase Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAw8kxGONoqeE2HnDLhMqwlJqqQI6I9boM",
+            authDomain: "gaming-console-79bfb.firebaseapp.com",
+            projectId: "gaming-console-79bfb",
+            storageBucket: "gaming-console-79bfb.appspot.com",
+            messagingSenderId: "895623566021",
+            appId: "1:895623566021:web:7c337fff510972e370d6ac"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // DOM elements
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const dobInput = document.getElementById('dob');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+        const dobError = document.getElementById('dobError');
+
+        // Validation functions
+        function validateName() {
+            const name = nameInput.value.trim();
+            const regex = /^[A-Za-z\s]{3,}$/;
+            if (!regex.test(name)) {
+                nameError.textContent = 'Name must be at least 3 alphabetic characters.';
+                return false;
+            } else {
+                nameError.textContent = '';
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regex.test(email)) {
+                emailError.textContent = 'Invalid email format.';
+                return false;
+            } else {
+                emailError.textContent = '';
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            const password = passwordInput.value.trim();
+            const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            if (!regex.test(password)) {
+                passwordError.textContent = 'Password must be at least 8 characters long and contain letters and numbers.';
+                return false;
+            } else {
+                passwordError.textContent = '';
+                return true;
+            }
+        }
+
+        function validateConfirmPassword() {
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = 'Passwords do not match.';
+                return false;
+            } else {
+                confirmPasswordError.textContent = '';
+                return true;
+            }
+        }
+
+        function validateDOB() {
+            const dob = dobInput.value;
+            const today = new Date();
+            const birthDate = new Date(dob);
+            const age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            if (dob === '' || age < 18) {
+                dobError.textContent = 'You must be at least 18 years old.';
+                return false;
+            } else {
+                dobError.textContent = '';
+                return true;
+            }
+        }
+
+        // Real-time validation on typing
+        nameInput.addEventListener('input', validateName);
+        emailInput.addEventListener('input', validateEmail);
+        passwordInput.addEventListener('input', validatePassword);
+        confirmPasswordInput.addEventListener('input', validateConfirmPassword);
+        dobInput.addEventListener('input', validateDOB);
+
+        // Form submission
+        document.getElementById("registrationForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isPasswordValid = validatePassword();
+            const isConfirmPasswordValid = validateConfirmPassword();
+            const isDOBValid = validateDOB();
+
+            if (isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isDOBValid) {
+                // Save to Firebase if all validations pass
+                set(ref(db, 'user/' + nameInput.value), {
+                    name: nameInput.value,
+                    email: emailInput.value,
+                    password: passwordInput.value,
+                    confirmPassword: confirmPasswordInput.value,
+                    dob: dobInput.value,
+                });
+                alert("Registration successful!");
+            } else {
+                alert("Please fill out the form correctly.");
+            }
+        });
+    </script>
+</body>
+</html>
